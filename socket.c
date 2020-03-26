@@ -6,8 +6,20 @@
 #include <arpa/inet.h>
 #include "error.h"
 
+#define PORT 6900
 
+void dump(const unsigned char *data_buffer, const unsigned int length)
 
+struct sockaddr_in
+{
+    __SOCKADDR_COMMON (sin_);
+    in_port_t sin_port;           /* Port number. */
+
+    struct in_addr sin_addr;            /* Internet address. */
+
+/* Pad to size of 'struct sockaddr'. */
+    unsigned char sin_zero[sizeof (struct sockaddr) -    __SOCKADDR_COMMON_SIZE -    sizeof (in_port_t) -    sizeof (struct in_addr)];
+};
 
 int main(void)
 {
